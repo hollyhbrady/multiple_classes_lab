@@ -1,7 +1,5 @@
 class Bus:
 
-    import pdb
-
     def __init__(self, route_number, destination):
         self.route_number = route_number
         self.destination = destination
@@ -24,11 +22,14 @@ class Bus:
     def empty(self):
         return self.passengers.clear()
 
-    def pick_up_from_stop(self, person):
-        # pdb.stacktrace()
-        bus_stop.add_to_queue(person)
-        self.pick_up(person)
-        bus_stop.clear() 
+    def pick_up_from_stop(self, bus_stop):
+        for queue in bus_stop.queue:
+            self.pick_up(queue)
+        bus_stop.queue.clear()
+        
+        # bus_stop.add_to_queue(person)
+        # self.pick_up(person)
+        # bus_stop.clear() 
 
 
         # def sell_pet_to_customer(self, pet_name, customer):
